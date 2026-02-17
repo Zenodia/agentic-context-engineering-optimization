@@ -1,0 +1,382 @@
+{
+  "benchmark_info": {
+    "model": "nvidia/llama-3.1-nemotron-nano-8b-v1",
+    "total_queries": 5,
+    "avg_steps_per_query_without_optimization": 0.8,
+    "avg_steps_per_query_with_optimization": null,
+    "timestamp": "2026-02-12T13:52:33.745999",
+    "system_prompt_template_words": 651,
+    "system_prompt_tokens_estimate": 846.3000000000001,
+    "plan_file": "/home/zenodia/Agents/agentic_context_engineering/benchmark_stepwised_plan.txt",
+    "using_real_infrastructure": true,
+    "llm_call_method": "direct",
+    "strategy": "Plan state offloading (file reference vs embedded plan)",
+    "source_files": [
+      "query_decomposition.py (system prompt)",
+      "plan_manager.py (file-based plan tracking with update_step_status)",
+      "gradio_agent_chatbot.py (example queries)"
+    ]
+  },
+  "aggregate_stats": {
+    "avg_time_without_optimization": 24.961079692840578,
+    "avg_time_per_step_without_optimization": 34.04222277800242,
+    "total_time_without_optimization": 124.80539846420288,
+    "avg_kv_cache_hit_rate_without_optimization": null,
+    "avg_time_with_optimization": null,
+    "avg_time_per_step_with_optimization": null,
+    "total_time_with_optimization": null,
+    "avg_kv_cache_hit_rate_with_optimization": null,
+    "avg_speedup": null,
+    "avg_speedup_pct": null,
+    "total_time_saved": null
+  },
+  "per_query_results": [
+    {
+      "query": "Book myself for 1 hour tomorrow at 2pm for creative work, then generate 5 innovative AI project ideas",
+      "num_steps_executed": 1,
+      "num_steps_without_optimization": 1,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 49.049293994903564,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": 49.049293994903564,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 2,
+        "num_tool_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 1,
+        "tool_calls": [
+          {
+            "tool_name": "generate_ideas",
+            "tool_args": {
+              "topic": "AI project ideas",
+              "num_ideas": 5
+            },
+            "step_number": 1
+          }
+        ],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 2,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "Create a planning session next Monday at 10am for 2 hours and brainstorm ideas about sustainable technology",
+      "num_steps_executed": 2,
+      "num_steps_without_optimization": 2,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 26.57853674888611,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": 13.289268374443054,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 2,
+        "num_tool_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 2,
+            "tool_names": [
+              "brainstorm_concepts",
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 1,
+        "tool_calls": [
+          {
+            "tool_name": "brainstorm_concepts",
+            "tool_args": {
+              "domain": "sustainable technology",
+              "focus_area": "",
+              "constraints": null
+            },
+            "step_number": 1
+          },
+          {
+            "tool_name": "generate_ideas",
+            "tool_args": {
+              "topic": "sustainable technology",
+              "num_ideas": 5,
+              "creativity": 0.8,
+              "use_parallel": false
+            },
+            "step_number": 2
+          }
+        ],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 2,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 2,
+            "tool_names": [
+              "brainstorm_concepts",
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "I wanna understand how this chatbot is so fast, could you give me some insights?",
+      "num_steps_executed": 0,
+      "num_steps_without_optimization": 0,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 3.5077974796295166,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": null,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 1,
+        "num_tool_calls": 0,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 0,
+        "tool_calls": [],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "What is the architecture of this chatbot?",
+      "num_steps_executed": 1,
+      "num_steps_without_optimization": 1,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 39.788105964660645,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": 39.788105964660645,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 2,
+        "num_tool_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "expand_idea_technical"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 1,
+        "tool_calls": [
+          {
+            "tool_name": "expand_idea_technical",
+            "tool_args": {
+              "idea": "chatbot architecture"
+            },
+            "step_number": 1
+          }
+        ],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 2,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "expand_idea_technical"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "help me understand the code base of this chatbot?",
+      "num_steps_executed": 0,
+      "num_steps_without_optimization": 0,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 5.881664276123047,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": null,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 1,
+        "num_tool_calls": 0,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 0,
+        "tool_calls": [],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    }
+  ]
+}

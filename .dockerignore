@@ -1,0 +1,55 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Documentation and markdown (keep README.md)
+*.md
+!README.md
+
+# Test files
+test_*.py
+*_test.py
+
+# Generated files
+generated_images/
+plans/
+*.ics
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker files (no need to copy into container)
+Dockerfile
+.dockerignore
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Development files
+stepwised_plan.txt
+5STEP_FLOW_DIAGRAM.md
+

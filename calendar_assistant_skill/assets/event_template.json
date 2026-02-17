@@ -1,0 +1,60 @@
+{
+  "event_template": {
+    "summary": "Event Title",
+    "description": "Event description and details",
+    "start_date": "YYYY-MM-DD",
+    "start_time": "HH:MM",
+    "duration_hours": 1.0,
+    "location": "Event location",
+    "organizer_email": "organizer@example.com",
+    "organizer_name": "Organizer Name",
+    "attendees": [
+      {
+        "email": "attendee1@example.com",
+        "name": "Attendee One",
+        "role": "REQ-PARTICIPANT"
+      },
+      {
+        "email": "attendee2@example.com",
+        "name": "Attendee Two",
+        "role": "OPT-PARTICIPANT"
+      }
+    ],
+    "reminder_hours": 1.0,
+    "timezone": "UTC"
+  },
+  
+  "common_event_types": {
+    "meeting": {
+      "summary": "Team Meeting",
+      "duration_hours": 1.0,
+      "reminder_hours": 1.0
+    },
+    "appointment": {
+      "summary": "Appointment",
+      "duration_hours": 0.5,
+      "reminder_hours": 2.0
+    },
+    "deadline": {
+      "summary": "Project Deadline",
+      "duration_hours": 0,
+      "reminder_hours": 24.0
+    },
+    "conference": {
+      "summary": "Conference",
+      "duration_hours": 8.0,
+      "reminder_hours": 24.0
+    }
+  },
+  
+  "timezone_examples": [
+    "UTC",
+    "America/New_York",
+    "America/Los_Angeles",
+    "Europe/London",
+    "Europe/Paris",
+    "Asia/Tokyo",
+    "Australia/Sydney"
+  ]
+}
+

@@ -1,0 +1,386 @@
+{
+  "benchmark_info": {
+    "model": "nvidia/llama-3.1-nemotron-nano-8b-v1",
+    "total_queries": 5,
+    "avg_steps_per_query_without_optimization": 1.0,
+    "avg_steps_per_query_with_optimization": null,
+    "timestamp": "2026-02-12T13:49:59.753753",
+    "system_prompt_template_words": 651,
+    "system_prompt_tokens_estimate": 846.3000000000001,
+    "plan_file": "/home/zenodia/Agents/agentic_context_engineering/benchmark_stepwised_plan.txt",
+    "using_real_infrastructure": true,
+    "llm_call_method": "direct",
+    "strategy": "Plan state offloading (file reference vs embedded plan)",
+    "source_files": [
+      "query_decomposition.py (system prompt)",
+      "plan_manager.py (file-based plan tracking with update_step_status)",
+      "gradio_agent_chatbot.py (example queries)"
+    ]
+  },
+  "aggregate_stats": {
+    "avg_time_without_optimization": 80.00273065567016,
+    "avg_time_per_step_without_optimization": 15.104504853487015,
+    "total_time_without_optimization": 400.01365327835083,
+    "avg_kv_cache_hit_rate_without_optimization": null,
+    "avg_time_with_optimization": null,
+    "avg_time_per_step_with_optimization": null,
+    "total_time_with_optimization": null,
+    "avg_kv_cache_hit_rate_with_optimization": null,
+    "avg_speedup": null,
+    "avg_speedup_pct": null,
+    "total_time_saved": null
+  },
+  "per_query_results": [
+    {
+      "query": "Schedule a meeting tomorrow at 2pm",
+      "num_steps_executed": 1,
+      "num_steps_without_optimization": 1,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 5.37775731086731,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": 5.37775731086731,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 2,
+        "num_tool_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "create_ics_file"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 1,
+        "tool_calls": [
+          {
+            "tool_name": "create_ics_file",
+            "tool_args": {
+              "summary": "Schedule a meeting tomorrow at 2pm",
+              "start_date": "2023-10-05",
+              "duration_hours": 1.0,
+              "location": "",
+              "reminder_hours": 1.0,
+              "output_filename": null
+            },
+            "step_number": 1
+          }
+        ],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 2,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "create_ics_file"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "Generate 5 ideas for sustainable living",
+      "num_steps_executed": 0,
+      "num_steps_without_optimization": 0,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 325.95353722572327,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": null,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": null,
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 0,
+        "tool_calls": [],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "Book a creative session next Thursday at 2pm for 3 hours",
+      "num_steps_executed": 2,
+      "num_steps_without_optimization": 2,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 27.28419327735901,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": 13.642096638679504,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 2,
+        "num_tool_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 2,
+            "tool_names": [
+              "brainstorm_concepts",
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 1,
+        "tool_calls": [
+          {
+            "tool_name": "brainstorm_concepts",
+            "tool_args": {
+              "domain": "education",
+              "focus_area": "student-learning",
+              "constraints": null
+            },
+            "step_number": 1
+          },
+          {
+            "tool_name": "generate_ideas",
+            "tool_args": {
+              "topic": "innovative-education-tools",
+              "num_ideas": 5,
+              "creativity": 0.9,
+              "use_parallel": true
+            },
+            "step_number": 2
+          }
+        ],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 2,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 2,
+            "tool_names": [
+              "brainstorm_concepts",
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "Generate 10 ideas for improving remote work productivity",
+      "num_steps_executed": 1,
+      "num_steps_without_optimization": 1,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 20.54279923439026,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": 20.54279923439026,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 2,
+        "num_tool_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 1,
+        "tool_calls": [
+          {
+            "tool_name": "generate_ideas",
+            "tool_args": {
+              "topic": "remote work productivity",
+              "num_ideas": 10
+            },
+            "step_number": 1
+          }
+        ],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 2,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "generate_ideas"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    },
+    {
+      "query": "gemerating 10 images of a futuristic cyberpunk city at night",
+      "num_steps_executed": 1,
+      "num_steps_without_optimization": 1,
+      "num_steps_with_optimization": null,
+      "task_flag": "without_optimization",
+      "without_optimization_time": 20.855366230010986,
+      "with_optimization_time": null,
+      "time_saved": null,
+      "speedup": null,
+      "speedup_pct": null,
+      "avg_time_per_step_without_optimization": 20.855366230010986,
+      "avg_time_per_step_with_optimization": null,
+      "kv_cache_hit_rate_without_optimization": null,
+      "kv_cache_hit_rate_with_optimization": null,
+      "cache_metrics_without_optimization": {
+        "tool_calling_cache_hit_rate": null,
+        "overall_cache_hit_rate": null,
+        "avg_llm_call_cache_hit_rate": null,
+        "avg_tool_call_cache_hit_rate": null,
+        "num_llm_calls": 2,
+        "num_tool_calls": 1,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "brainstorm_concepts"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ],
+        "per_call_cache_hit_rates": [],
+        "tool_calling_cache_hit_rates": [],
+        "non_tool_calling_cache_hit_rates": []
+      },
+      "cache_metrics_with_optimization": null,
+      "tool_calling_metrics_without_optimization": {
+        "num_tool_calls": 1,
+        "tool_calls": [
+          {
+            "tool_name": "brainstorm_concepts",
+            "tool_args": {
+              "domain": "cyberpunk city",
+              "focus_area": "futuristic technology",
+              "constraints": null
+            },
+            "step_number": 1
+          }
+        ],
+        "total_tool_execution_time": 0.0,
+        "avg_tool_execution_time": 0.0,
+        "num_llm_calls": 2,
+        "llm_call_metrics": [
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": true,
+            "num_tool_calls": 1,
+            "tool_names": [
+              "brainstorm_concepts"
+            ]
+          },
+          {
+            "cache_hit_rate": null,
+            "has_tool_calls": false,
+            "num_tool_calls": 0,
+            "tool_names": []
+          }
+        ]
+      },
+      "tool_calling_metrics_with_optimization": null
+    }
+  ]
+}

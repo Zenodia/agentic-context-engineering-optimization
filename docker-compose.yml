@@ -1,0 +1,34 @@
+version: '3.8'
+
+# DEVELOPMENT MODE: Mounts current directory for live code editing
+# For production deployment, use: docker-compose -f docker-compose.prod.yml up -d
+
+services:
+  agent-chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-skills-chatbot
+    network_mode: "host"
+    # ports:
+    #   - "7860:7860"  # Not needed with host networking
+    environment:
+      # Required: Set your NVIDIA API key
+      # Get your key at: https://build.nvidia.com/
+      - NVIDIA_API_KEY=${NVIDIA_API_KEY}
+      # Required for VLM (image analysis) skill
+      - INFERENCE_API_KEY=${INFERENCE_API_KEY}
+    volumes:
+      # Mount current directory for live code editing (development mode)
+      - .:/app
+      # Mount generated images and plans for persistence
+      - ./generated_images:/app/generated_images
+      - ./plans:/app/plans
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+

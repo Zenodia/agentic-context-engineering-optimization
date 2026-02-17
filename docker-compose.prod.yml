@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  agent-chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-skills-chatbot-prod
+    ports:
+      - "7860:7860"
+    environment:
+      # Required: Set your NVIDIA API key
+      # Get your key at: https://build.nvidia.com/
+      - NVIDIA_API_KEY=${NVIDIA_API_KEY}
+      # Required for VLM (image analysis) skill
+      - INFERENCE_API_KEY=${INFERENCE_API_KEY}
+    volumes:
+      # Only mount output directories (no code mount for production)
+      - ./generated_images:/app/generated_images
+      - ./plans:/app/plans
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 2G
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+

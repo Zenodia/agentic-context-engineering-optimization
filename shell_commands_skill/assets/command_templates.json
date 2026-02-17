@@ -1,0 +1,294 @@
+{
+  "find_patterns": {
+    "by_extension": {
+      "description": "Find all files with specific extension",
+      "examples": [
+        {
+          "pattern": "*.md",
+          "description": "All markdown files"
+        },
+        {
+          "pattern": "*.py",
+          "description": "All Python files"
+        },
+        {
+          "pattern": "*.{js,ts}",
+          "description": "JavaScript and TypeScript files (regex mode)"
+        },
+        {
+          "pattern": "*.json",
+          "description": "All JSON files"
+        },
+        {
+          "pattern": "*.log",
+          "description": "All log files"
+        }
+      ]
+    },
+    "by_name": {
+      "description": "Find files by name pattern",
+      "examples": [
+        {
+          "pattern": "test_*",
+          "description": "Files starting with 'test_'"
+        },
+        {
+          "pattern": "*config*",
+          "description": "Files containing 'config'"
+        },
+        {
+          "pattern": "README*",
+          "description": "README files with any extension"
+        },
+        {
+          "pattern": ".*",
+          "description": "Hidden files (starting with dot)"
+        }
+      ]
+    },
+    "by_regex": {
+      "description": "Advanced regex patterns",
+      "examples": [
+        {
+          "pattern": "^[a-z]+\\.log$",
+          "description": "Log files with lowercase names"
+        },
+        {
+          "pattern": "^[0-9]+\\.txt$",
+          "description": "Numbered text files"
+        },
+        {
+          "pattern": "^test_.*\\.py$",
+          "description": "Python test files"
+        },
+        {
+          "pattern": ".*README.*",
+          "description": "Any file with README in name"
+        }
+      ]
+    }
+  },
+  
+  "grep_patterns": {
+    "code_search": {
+      "description": "Search for code patterns",
+      "examples": [
+        {
+          "search_text": "TODO",
+          "file_pattern": "*.py",
+          "description": "Find TODO comments in Python"
+        },
+        {
+          "search_text": "FIXME",
+          "file_pattern": "*",
+          "description": "Find FIXME comments everywhere"
+        },
+        {
+          "search_text": "import",
+          "file_pattern": "*.py",
+          "description": "Find import statements"
+        },
+        {
+          "search_text": "class ",
+          "file_pattern": "*.py",
+          "description": "Find class definitions"
+        },
+        {
+          "search_text": "def ",
+          "file_pattern": "*.py",
+          "description": "Find function definitions"
+        }
+      ]
+    },
+    "config_search": {
+      "description": "Search configuration files",
+      "examples": [
+        {
+          "search_text": "api_key",
+          "file_pattern": "*.{yaml,yml,json}",
+          "description": "Find API key configurations"
+        },
+        {
+          "search_text": "port",
+          "file_pattern": "*.conf",
+          "description": "Find port configurations"
+        }
+      ]
+    }
+  },
+  
+  "common_workflows": {
+    "backup_configs": {
+      "description": "Backup all configuration files",
+      "steps": [
+        "find_files(pattern='*.yaml')",
+        "find_files(pattern='*.json')",
+        "find_files(pattern='*.conf')",
+        "copy_file(source='config.yaml', destination='backups/config.yaml')"
+      ]
+    },
+    "find_todos": {
+      "description": "Find all TODO comments in code",
+      "steps": [
+        "find_files(pattern='*.py')",
+        "grep_files(search_text='TODO', file_pattern='*.py')",
+        "grep_files(search_text='FIXME', file_pattern='*.py')"
+      ]
+    },
+    "project_analysis": {
+      "description": "Analyze project structure",
+      "steps": [
+        "print_working_directory()",
+        "list_directory()",
+        "find_files(pattern='*.py')",
+        "find_files(pattern='*.md')",
+        "find_files(pattern='*.json')"
+      ]
+    }
+  },
+  
+  "file_type_extensions": {
+    "programming": [
+      "py", "js", "ts", "java", "cpp", "c", "h", "go", "rs", "rb", "php", "swift", "kt"
+    ],
+    "web": [
+      "html", "css", "scss", "sass", "less", "jsx", "tsx", "vue"
+    ],
+    "data": [
+      "json", "yaml", "yml", "xml", "csv", "tsv", "sql"
+    ],
+    "documentation": [
+      "md", "txt", "rst", "adoc", "pdf"
+    ],
+    "configuration": [
+      "conf", "config", "ini", "env", "properties", "toml"
+    ],
+    "scripts": [
+      "sh", "bash", "zsh", "fish", "ps1", "bat", "cmd"
+    ]
+  },
+  
+  "safe_operations": {
+    "allowed": [
+      "ls - List directory contents",
+      "cd - Change directory",
+      "pwd - Print working directory",
+      "cp - Copy files/directories",
+      "touch - Create files",
+      "find - Search for files",
+      "grep - Search file contents",
+      "cat - Display file contents",
+      "head - Show first lines",
+      "tail - Show last lines",
+      "wc - Count lines/words",
+      "stat - File statistics",
+      "sed - Text replacement (preview mode)"
+    ],
+    "prohibited": [
+      "rm - Delete files (BLOCKED)",
+      "rmdir - Delete directories (BLOCKED)",
+      "-rf or -fr - Force recursive flags (BLOCKED)",
+      "dd - Disk operations (BLOCKED)",
+      "mkfs - Format filesystem (BLOCKED)",
+      "fdisk - Partition disk (BLOCKED)"
+    ]
+  },
+  
+  "text_viewing": {
+    "cat_file": {
+      "description": "Display entire file contents",
+      "examples": [
+        {
+          "usage": "cat_file('README.md')",
+          "description": "Show full README file"
+        },
+        {
+          "usage": "cat_file('config.yaml', show_line_numbers=True)",
+          "description": "Show config with line numbers"
+        },
+        {
+          "usage": "cat_file('log.txt', start_line=100, end_line=200)",
+          "description": "Show lines 100-200 of log file"
+        }
+      ]
+    },
+    "head_file": {
+      "description": "Show first N lines of file",
+      "examples": [
+        {
+          "usage": "head_file('error.log')",
+          "description": "Show first 10 lines (default)"
+        },
+        {
+          "usage": "head_file('data.csv', num_lines=50)",
+          "description": "Show first 50 lines"
+        }
+      ]
+    },
+    "tail_file": {
+      "description": "Show last N lines of file",
+      "examples": [
+        {
+          "usage": "tail_file('server.log')",
+          "description": "Show last 10 lines (default)"
+        },
+        {
+          "usage": "tail_file('output.txt', num_lines=100)",
+          "description": "Show last 100 lines"
+        }
+      ]
+    },
+    "grep_in_file": {
+      "description": "Search for pattern in specific file",
+      "examples": [
+        {
+          "usage": "grep_in_file('app.py', 'TODO')",
+          "description": "Find TODO comments in app.py"
+        },
+        {
+          "usage": "grep_in_file('config.yaml', 'api_key', case_sensitive=False)",
+          "description": "Case-insensitive search for api_key"
+        },
+        {
+          "usage": "grep_in_file('error.log', 'ERROR', context_lines=3)",
+          "description": "Show ERROR with 3 lines context"
+        },
+        {
+          "usage": "grep_in_file('data.txt', '^[0-9]+', regex=True)",
+          "description": "Find lines starting with numbers (regex)"
+        }
+      ]
+    },
+    "sed_replace": {
+      "description": "Replace text patterns (preview mode by default)",
+      "examples": [
+        {
+          "usage": "sed_replace('config.yaml', 'localhost', '127.0.0.1')",
+          "description": "Preview replacing localhost with IP"
+        },
+        {
+          "usage": "sed_replace('script.sh', 'old_var', 'new_var', output_file='script_new.sh', preview_only=False)",
+          "description": "Replace and save to new file"
+        },
+        {
+          "usage": "sed_replace('data.txt', '[0-9]+', 'NUM', regex=True)",
+          "description": "Replace all numbers with NUM (preview)"
+        }
+      ]
+    },
+    "count_lines": {
+      "description": "Count lines, words, and characters",
+      "examples": [
+        {
+          "usage": "count_lines('document.txt')",
+          "description": "Get statistics for document"
+        },
+        {
+          "usage": "count_lines('script.py')",
+          "description": "Count lines of code"
+        }
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,23 @@
+# Requirements for Agent Skills Chatbot Gradio App
+
+# Core dependencies
+gradio>=4.0.0
+openai>=1.0.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Optional: for better terminal colors
+colorama>=0.4.6
+
+# Existing skill dependencies
+# For calendar skill
+icalendar>=5.0.0
+langchain-nvidia-ai-endpoints>=0.0.11
+tiktoken
+# Note: Python 3.10+ required for best compatibility
+langchain
+langchain-core
+pydantic
+langgraph
+langchain-community
+requests

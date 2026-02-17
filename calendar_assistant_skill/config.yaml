@@ -1,0 +1,102 @@
+# Calendar Assistant Skill Configuration
+# AI Planner / NAT Integration
+
+# Skill metadata for selection
+name: calendar-assistant
+version: 1.0.0
+description: A comprehensive calendar management skill that enables AI agents to create, parse, and manage calendar events using natural language or structured inputs. Supports iCalendar (ICS) format for universal compatibility.
+
+# Access Control (optional)
+# Uncomment to restrict access by DL membership
+# user_group: []  # List of user groups that can access this skill
+# admin_group: []  # List of admin groups with full access
+
+# Skill Type: generic or custom
+# - generic: Uses ReAct agent with auto-discovered @skill_tool functions
+# - custom: Uses customized task agents with specific instructions
+skill_type: generic
+
+# Generic Skill Settings (for skill_type: generic)
+generic_settings:
+  # Tool auto-discovery from scripts/ directory
+  auto_discover_tools: true
+  
+  # Built-in resource access tools
+  enable_resource_tools: true
+  
+  # Agent settings
+  agent_type: react  # ReAct agent from NAT
+  max_iterations: 10
+  temperature: 0.3
+  
+# Custom Skill Settings (for skill_type: custom)
+# Uncomment and configure if skill_type is 'custom'
+# custom_settings:
+#   # Define custom task agents
+#   task_agents:
+#     - name: parser
+#       role: "Parse natural language into structured calendar events"
+#       instructions: "You are a calendar parsing expert. Extract dates, times, and event details from user input."
+#       tools:
+#         - parse_natural_language
+#         - validate_datetime
+#     
+#     - name: creator
+#       role: "Create RFC 5545 compliant ICS calendar files"
+#       instructions: "Generate iCalendar files with proper formatting and timezone handling."
+#       tools:
+#         - create_calendar_event
+#         - add_reminder
+#   
+#   # Dataset registry for custom agents
+#   datasets: []
+
+# Runtime configuration
+runtime:
+  type: python
+  version: ">=3.8"
+  entry_point: scripts/calendar_skill.py
+
+# Dependencies
+dependencies:
+  - icalendar>=5.0.0
+  - python-dateutil>=2.8.0
+  - PyYAML>=6.0
+  - langchain-nvidia-ai-endpoints>=0.1.0
+  - langchain-core>=0.1.0
+  - colorama>=0.4.0
+
+# Environment variables
+environment:
+  NVIDIA_API_KEY:
+    description: NVIDIA API key for natural language parsing (optional)
+    required: false
+  DEFAULT_TIMEZONE:
+    description: Default timezone for event creation
+    required: false
+    default: UTC
+
+# Permissions required by this skill
+permissions:
+  - file:write
+  - network:api
+
+# Tags for skill categorization
+tags:
+  - calendar
+  - scheduling
+  - ics
+  - events
+  - time-management
+  - productivity
+
+# License
+license: MIT
+author: Zenodia
+
+# Documentation links
+documentation:
+  readme: README.md
+  examples: examples.md
+  skill_instructions: SKILL.md
+

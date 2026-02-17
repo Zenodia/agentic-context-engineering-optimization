@@ -1,0 +1,130 @@
+{
+  "system_prompts": {
+    "creative_brainstorming": {
+      "name": "Creative Brainstorming",
+      "temperature": 0.9,
+      "prompt": "You are an innovative creative thinking expert. Generate diverse, imaginative ideas that push boundaries while remaining practical. Think outside the box and explore unconventional approaches."
+    },
+    "business_focused": {
+      "name": "Business-Focused Ideation",
+      "temperature": 0.6,
+      "prompt": "You are a strategic business consultant. Generate ideas with strong business value, clear ROI potential, and market viability. Consider competitive advantages and market fit."
+    },
+    "technical_solutions": {
+      "name": "Technical Solutions",
+      "temperature": 0.5,
+      "prompt": "You are a senior technical architect. Generate technically sound solutions with clear implementation paths. Consider scalability, security, and technical feasibility."
+    },
+    "user_centered": {
+      "name": "User-Centered Design",
+      "temperature": 0.7,
+      "prompt": "You are a UX design expert. Generate ideas that prioritize user needs, experiences, and pain points. Focus on usability, accessibility, and user delight."
+    }
+  },
+  
+  "idea_generation_prompts": {
+    "quick_ideas": {
+      "template": "Generate {num_ideas} innovative ideas for: {topic}\n\n{context}\n\nFor each idea, provide:\n1. **Title**: A catchy, descriptive name\n2. **Description**: 2-3 sentence overview\n3. **Key Features**: 3-5 main aspects\n4. **Potential Impact**: Why this idea matters\n5. **Next Steps**: Initial actions to explore or implement",
+      "variables": ["num_ideas", "topic", "context"]
+    },
+    
+    "constrained_brainstorming": {
+      "template": "Brainstorm creative concepts for the following:\n\n**Domain**: {domain}\n**Focus Area**: {focus_area}\n\n**Constraints/Requirements**:\n{constraints}\n\nProvide 3-5 innovative concepts with:\n- Concept name\n- Brief description\n- Key benefits\n- Implementation considerations",
+      "variables": ["domain", "focus_area", "constraints"]
+    },
+    
+    "problem_solving": {
+      "template": "**Problem Statement**: {problem}\n\n**Context**: {context}\n\nGenerate {num_solutions} creative solutions that:\n- Directly address the core problem\n- Are feasible to implement\n- Have measurable impact\n- Consider the given constraints\n\nFor each solution:\n1. Solution title\n2. How it solves the problem\n3. Key differentiators\n4. Implementation approach\n5. Success metrics",
+      "variables": ["problem", "context", "num_solutions"]
+    }
+  },
+  
+  "expansion_prompts": {
+    "detailed_expansion": {
+      "template": "Expand the following idea in comprehensive detail:\n\n**Idea**: {idea}\n\nProvide a thorough breakdown including:\n1. **Core Concept**: Detailed explanation\n2. **Components**: Major building blocks\n3. **Implementation**: Step-by-step approach\n4. **Requirements**: What's needed to execute\n5. **Challenges**: Potential obstacles and solutions\n6. **Timeline**: Estimated phases and duration\n7. **Success Metrics**: How to measure success",
+      "temperature": 0.5
+    },
+    
+    "technical_expansion": {
+      "template": "Provide a technical deep-dive for this idea:\n\n**Idea**: {idea}\n\n**Technical Analysis**:\n1. **Architecture**: System design and components\n2. **Technology Stack**: Recommended technologies and why\n3. **Data Model**: Key entities and relationships\n4. **APIs & Integrations**: External services needed\n5. **Scalability**: How it scales with growth\n6. **Security**: Security measures and compliance\n7. **DevOps**: Deployment and monitoring strategy\n8. **Technical Risks**: Challenges and mitigation",
+      "temperature": 0.4
+    },
+    
+    "business_expansion": {
+      "template": "Analyze this idea from a business perspective:\n\n**Idea**: {idea}\n\n**Business Analysis**:\n1. **Market Opportunity**: Target market and size\n2. **Value Proposition**: Unique selling points\n3. **Business Model**: Revenue streams and pricing\n4. **Target Customers**: Segments and personas\n5. **Go-to-Market**: Acquisition and sales strategy\n6. **Competitive Landscape**: Competition and differentiation\n7. **Financial Projections**: Revenue, costs, profitability\n8. **Risks & Mitigation**: Business risks and strategies",
+      "temperature": 0.5
+    },
+    
+    "creative_expansion": {
+      "template": "Explore creative variations and extensions of this idea:\n\n**Original Idea**: {idea}\n\n**Creative Exploration**:\n1. **Alternative Versions**: 3 variations with different approaches\n2. **Unexpected Applications**: Non-obvious use cases\n3. **Hybrid Concepts**: Combinations with other ideas\n4. **Future Vision**: Long-term evolution (5-10 years)\n5. **Cross-Industry Inspiration**: Lessons from other fields\n6. **Bold Innovations**: Breakthrough possibilities",
+      "temperature": 0.85
+    }
+  },
+  
+  "domain_specific_prompts": {
+    "software_product": {
+      "template": "Generate ideas for a software product in the {category} space.\n\n**Target Users**: {target_users}\n**Key Pain Points**: {pain_points}\n\n**Requirements**:\n- Must be technically feasible\n- Should have clear monetization path\n- Must differentiate from existing solutions\n\nProvide {num_ideas} product concepts with:\n- Product name\n- Core features\n- Technology approach\n- Market positioning"
+    },
+    
+    "marketing_campaign": {
+      "template": "Create marketing campaign ideas for:\n\n**Product/Service**: {product}\n**Target Audience**: {audience}\n**Campaign Goals**: {goals}\n**Budget Level**: {budget}\n**Channels**: {channels}\n\nGenerate {num_ideas} campaign concepts with:\n- Campaign name and tagline\n- Creative concept\n- Channel strategy\n- Content plan\n- Success metrics"
+    },
+    
+    "process_improvement": {
+      "template": "Suggest process improvements for:\n\n**Current Process**: {process}\n**Pain Points**: {pain_points}\n**Constraints**: {constraints}\n\nGenerate {num_ideas} improvement ideas with:\n- Improvement name\n- What changes\n- Expected benefits\n- Implementation difficulty\n- Success criteria"
+    },
+    
+    "research_topics": {
+      "template": "Propose research topics in:\n\n**Field**: {field}\n**Current Trends**: {trends}\n**Open Questions**: {questions}\n\nGenerate {num_ideas} research directions with:\n- Research question\n- Why it's important\n- Potential approach\n- Expected impact\n- Resource requirements"
+    }
+  },
+  
+  "creativity_levels": {
+    "conservative": {
+      "temperature": 0.3,
+      "description": "Practical, proven approaches with low risk"
+    },
+    "balanced": {
+      "temperature": 0.7,
+      "description": "Mix of proven and innovative approaches"
+    },
+    "innovative": {
+      "temperature": 0.85,
+      "description": "Bold, creative ideas pushing boundaries"
+    },
+    "experimental": {
+      "temperature": 0.95,
+      "description": "Highly unconventional, exploratory concepts"
+    }
+  },
+  
+  "output_formats": {
+    "structured_list": {
+      "format": "numbered_sections",
+      "includes": ["title", "description", "features", "impact", "next_steps"]
+    },
+    "comparison_table": {
+      "format": "markdown_table",
+      "columns": ["idea", "description", "pros", "cons", "feasibility"]
+    },
+    "detailed_narrative": {
+      "format": "prose",
+      "includes": ["context", "concept", "details", "implications"]
+    },
+    "bullet_points": {
+      "format": "bullets",
+      "depth": 2,
+      "concise": true
+    }
+  },
+  
+  "follow_up_prompts": {
+    "expand_specific_idea": "Let's dive deeper into Idea #{idea_number}. Provide comprehensive details on: {aspects}",
+    "combine_ideas": "How could we combine Ideas #{id1} and #{id2} into a hybrid concept?",
+    "identify_challenges": "What are the main challenges with implementing Idea #{idea_number} and how might we overcome them?",
+    "market_analysis": "Analyze the market potential for Idea #{idea_number}. Who are the competitors and what's our differentiation?",
+    "technical_feasibility": "Assess the technical feasibility of Idea #{idea_number}. What technologies would we need?",
+    "next_steps": "What are the concrete next steps to validate and develop Idea #{idea_number}?"
+  }
+}
+

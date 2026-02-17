@@ -1,0 +1,282 @@
+{
+  "system_prompts": {
+    "precise_analysis": {
+      "name": "Precise Visual Analysis",
+      "temperature": 0.1,
+      "prompt": "You are a precise visual analysis expert. Provide accurate, factual descriptions of images with attention to detail. Avoid speculation or interpretation beyond what is clearly visible."
+    },
+    "detailed_description": {
+      "name": "Detailed Description",
+      "temperature": 0.2,
+      "prompt": "You are a visual description specialist. Provide comprehensive, structured descriptions covering all aspects of the image including scene, objects, colors, lighting, composition, and any text."
+    },
+    "creative_interpretation": {
+      "name": "Creative Interpretation",
+      "temperature": 0.6,
+      "prompt": "You are a creative visual interpreter. Analyze images with insight into mood, emotion, artistic intent, and deeper meaning while remaining grounded in observable details."
+    },
+    "technical_analysis": {
+      "name": "Technical Analysis",
+      "temperature": 0.2,
+      "prompt": "You are a technical image analysis expert. Focus on technical aspects, specifications, measurements, and functional details visible in the image."
+    }
+  },
+  
+  "analysis_prompts": {
+    "general_description": {
+      "template": "Identify what is in this image and describe it in detail.",
+      "temperature": 0.2,
+      "max_tokens": 1024
+    },
+    
+    "comprehensive_analysis": {
+      "template": "Provide a comprehensive analysis of this image including:\n1. Overall scene and context\n2. Main objects and their positions\n3. Colors, lighting, and atmosphere\n4. Notable details and textures\n5. Any text visible in the image\n6. The mood or emotion conveyed\n\nBe thorough and specific in your description.",
+      "temperature": 0.2,
+      "max_tokens": 2048
+    },
+    
+    "focused_analysis": {
+      "template": "Analyze this image focusing specifically on: {aspects}\n\nProvide detailed observations about these aspects.",
+      "variables": ["aspects"],
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "quick_summary": {
+      "template": "Provide a brief, one-paragraph summary of what this image shows.",
+      "temperature": 0.2,
+      "max_tokens": 256
+    }
+  },
+  
+  "ocr_prompts": {
+    "standard_ocr": {
+      "template": "Extract ALL text visible in this image.\n\nRequirements:\n- List all text exactly as it appears\n- Preserve formatting where relevant\n- Include text from signs, labels, documents, screens, etc.\n- If there is no text, explicitly state 'No text detected'\n- Organize the text logically (e.g., top to bottom, left to right)\n\nFormat your response as:\n**Extracted Text:**\n[text content here]\n\n**Context:**\n[brief note about where/how the text appears]",
+      "temperature": 0.1,
+      "max_tokens": 2048
+    },
+    
+    "document_ocr": {
+      "template": "Extract text from this document image.\n\n- Preserve document structure and formatting\n- Maintain paragraph breaks\n- Note any headers, footers, or special formatting\n- List bullet points or numbered items accurately\n- Include page numbers if visible",
+      "temperature": 0.1,
+      "max_tokens": 2048
+    },
+    
+    "structured_data_extraction": {
+      "template": "Extract structured information from this image:\n\n- Identify all labels and their corresponding values\n- Extract any tables or lists\n- Note form fields and their contents\n- Preserve hierarchical relationships\n\nFormat as clearly structured data.",
+      "temperature": 0.1,
+      "max_tokens": 2048
+    },
+    
+    "receipt_extraction": {
+      "template": "Extract information from this receipt:\n\n- Store/vendor name\n- Date and time\n- All items with prices\n- Subtotal, tax, and total amounts\n- Payment method\n- Receipt/transaction number\n\nFormat as a structured list.",
+      "temperature": 0.1,
+      "max_tokens": 1536
+    }
+  },
+  
+  "object_identification_prompts": {
+    "detailed_objects": {
+      "template": "Identify all significant objects in this image.\n\nFor each object, provide:\n1. Object name/type\n2. Position in the image (e.g., foreground, background, left, right)\n3. Notable attributes (color, size, condition)\n4. Approximate quantity if multiple\n\nFormat as a clear, organized list.",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "count_objects": {
+      "template": "Count and list all instances of {object_type} in this image.\n\nProvide:\n- Total count\n- Location of each instance\n- Any distinguishing features",
+      "variables": ["object_type"],
+      "temperature": 0.2,
+      "max_tokens": 1024
+    },
+    
+    "categorize_objects": {
+      "template": "Identify and categorize all objects in this image.\n\nGroup objects by:\n- Type/category\n- Function\n- Material\n\nProvide a structured categorization.",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    }
+  },
+  
+  "visual_qa_prompts": {
+    "factual_question": {
+      "template": "Answer the following question about this image:\n\n**Question:** {question}\n\nProvide a clear, factual answer based on what you can observe. If you cannot determine the answer from the image, explain why.",
+      "variables": ["question"],
+      "temperature": 0.2,
+      "max_tokens": 1024
+    },
+    
+    "counting_question": {
+      "template": "**Question:** {question}\n\nCount carefully and provide:\n1. The exact count\n2. How you determined this number\n3. Any uncertainties or assumptions",
+      "variables": ["question"],
+      "temperature": 0.1,
+      "max_tokens": 512
+    },
+    
+    "comparison_question": {
+      "template": "**Question:** {question}\n\nCompare the relevant elements and explain:\n1. What you're comparing\n2. Key differences or similarities\n3. Your conclusion",
+      "variables": ["question"],
+      "temperature": 0.3,
+      "max_tokens": 1024
+    },
+    
+    "reasoning_question": {
+      "template": "**Question:** {question}\n\nAnalyze the image and provide:\n1. Relevant observations\n2. Your reasoning process\n3. Your conclusion with confidence level",
+      "variables": ["question"],
+      "temperature": 0.4,
+      "max_tokens": 1024
+    }
+  },
+  
+  "domain_specific_prompts": {
+    "technical_diagram": {
+      "template": "Analyze this technical diagram and provide:\n1. Overall system architecture or structure\n2. Components and their relationships\n3. Data flow or process flow\n4. Key technologies, protocols, or standards shown\n5. Any annotations, labels, or legends\n6. Purpose and function of the diagram",
+      "temperature": 0.2,
+      "max_tokens": 2048
+    },
+    
+    "chart_graph_analysis": {
+      "template": "Analyze this chart/graph and provide:\n1. Type of visualization (bar, line, pie, etc.)\n2. Axes labels and units\n3. Data series and categories\n4. Key trends or patterns\n5. Notable data points or outliers\n6. Overall insights or conclusions",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "ui_screenshot": {
+      "template": "Analyze this user interface screenshot:\n1. Application or website type\n2. Main UI elements (buttons, menus, forms, etc.)\n3. Layout and navigation structure\n4. Any visible text or labels\n5. User interaction points\n6. Design patterns or frameworks used",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "product_image": {
+      "template": "Analyze this product image:\n1. Product type and category\n2. Brand (if visible)\n3. Key features and specifications visible\n4. Condition (new/used)\n5. Color, size, and material\n6. Packaging or presentation\n7. Any text or labels (prices, sizes, etc.)",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "real_estate": {
+      "template": "Analyze this real estate image:\n1. Property type (house, apartment, commercial, etc.)\n2. Room type (if interior)\n3. Key features and amenities visible\n4. Condition and quality\n5. Style and design elements\n6. Approximate size or layout\n7. Notable selling points",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "medical_educational": {
+      "template": "Analyze this medical/educational image:\n1. Type of image (diagram, chart, scan, etc.)\n2. Anatomical structures or concepts shown\n3. Labels and annotations\n4. Educational purpose\n5. Key learning points\n\n**Note:** This is for educational purposes only, not diagnostic.",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "food_menu": {
+      "template": "Analyze this food/menu image:\n1. Type of food or cuisine\n2. Dishes and items visible\n3. Presentation and plating\n4. Prices (if visible)\n5. Menu sections or categories\n6. Any dietary information or symbols\n7. Restaurant or brand information",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    },
+    
+    "document_form": {
+      "template": "Analyze this document/form:\n1. Document type (invoice, contract, form, etc.)\n2. Key sections and fields\n3. Filled vs empty fields\n4. Dates, names, and identifiers\n5. Important terms or conditions\n6. Signatures or stamps (if present)\n\nFormat as structured information.",
+      "temperature": 0.1,
+      "max_tokens": 2048
+    }
+  },
+  
+  "comparison_prompts": {
+    "side_by_side": {
+      "template": "Compare these two images side by side:\n\n**Similarities:**\n- What elements are present in both?\n- What consistent features do they share?\n\n**Differences:**\n- What's unique to each image?\n- How do they differ in {aspects}?\n\n**Overall Assessment:**\n- Which differences are most significant?\n- What's the relationship between these images?",
+      "variables": ["aspects"],
+      "temperature": 0.3,
+      "max_tokens": 2048
+    },
+    
+    "before_after": {
+      "template": "Analyze the changes between these before/after images:\n\n1. What changed?\n2. What remained the same?\n3. Magnitude of changes (subtle/significant)\n4. Type of changes (aesthetic, structural, functional)\n5. Potential reasons for changes\n6. Overall improvement or regression",
+      "temperature": 0.3,
+      "max_tokens": 1536
+    },
+    
+    "version_comparison": {
+      "template": "Compare these versions and identify:\n\n1. Design changes\n2. Feature additions or removals\n3. Layout modifications\n4. Color scheme changes\n5. Typography updates\n6. Overall evolution or iteration",
+      "temperature": 0.3,
+      "max_tokens": 1536
+    }
+  },
+  
+  "creative_prompts": {
+    "mood_emotion": {
+      "template": "Analyze the mood and emotional content of this image:\n1. Overall emotional tone\n2. Colors and their emotional impact\n3. Composition and framing effects\n4. Subject expressions or body language\n5. Lighting and atmosphere\n6. Intended emotional response",
+      "temperature": 0.5,
+      "max_tokens": 1024
+    },
+    
+    "artistic_analysis": {
+      "template": "Provide an artistic analysis of this image:\n1. Composition and rule of thirds\n2. Use of color and contrast\n3. Lighting and shadows\n4. Perspective and depth\n5. Focal points and visual hierarchy\n6. Artistic style or influences\n7. Technical execution",
+      "temperature": 0.5,
+      "max_tokens": 1536
+    },
+    
+    "storytelling": {
+      "template": "Describe the story or narrative suggested by this image:\n1. What's happening in this moment?\n2. What might have led to this scene?\n3. What might happen next?\n4. Who or what is the subject?\n5. What emotions or themes are present?",
+      "temperature": 0.7,
+      "max_tokens": 1024
+    }
+  },
+  
+  "accessibility_prompts": {
+    "alt_text": {
+      "template": "Generate accessible alt text for this image:\n\n- Briefly describe the essential visual information\n- Keep it concise (1-2 sentences)\n- Focus on relevant details\n- Avoid starting with 'Image of...' or 'Picture of...'\n- Include text if critical to understanding",
+      "temperature": 0.2,
+      "max_tokens": 256
+    },
+    
+    "extended_description": {
+      "template": "Provide an extended image description for accessibility:\n\n1. Brief overview (1 sentence)\n2. Detailed scene description\n3. Notable objects and their positions\n4. Colors and lighting\n5. Any text content\n6. Context and purpose of the image\n\nFormat for screen reader clarity.",
+      "temperature": 0.2,
+      "max_tokens": 2048
+    }
+  },
+  
+  "quality_assessment_prompts": {
+    "image_quality": {
+      "template": "Assess the technical quality of this image:\n1. Resolution and clarity\n2. Focus and sharpness\n3. Lighting quality\n4. Color balance\n5. Composition\n6. Any defects or issues\n7. Overall quality rating (1-10)",
+      "temperature": 0.3,
+      "max_tokens": 1024
+    },
+    
+    "defect_detection": {
+      "template": "Inspect this image for defects or issues:\n1. Visible defects or damage\n2. Quality inconsistencies\n3. Misalignments or errors\n4. Missing elements\n5. Severity of each issue\n6. Overall quality assessment",
+      "temperature": 0.2,
+      "max_tokens": 1536
+    }
+  },
+  
+  "temperature_guidelines": {
+    "ocr_text_extraction": 0.1,
+    "counting_objects": 0.1,
+    "technical_analysis": 0.2,
+    "general_description": 0.2,
+    "object_identification": 0.2,
+    "visual_qa_factual": 0.2,
+    "detailed_analysis": 0.3,
+    "comparison": 0.3,
+    "visual_qa_reasoning": 0.4,
+    "creative_interpretation": 0.5,
+    "mood_emotion": 0.6,
+    "storytelling": 0.7
+  },
+  
+  "output_formats": {
+    "structured_list": {
+      "description": "Numbered or bulleted list with clear sections",
+      "use_cases": ["object identification", "feature lists", "step-by-step"]
+    },
+    "markdown_table": {
+      "description": "Markdown table format for comparisons",
+      "use_cases": ["comparisons", "specifications", "data extraction"]
+    },
+    "narrative": {
+      "description": "Flowing prose with paragraphs",
+      "use_cases": ["descriptions", "stories", "interpretations"]
+    },
+    "structured_json": {
+      "description": "JSON-like key-value structure",
+      "use_cases": ["data extraction", "structured output", "API responses"]
+    }
+  }
+}
+

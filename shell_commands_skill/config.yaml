@@ -1,0 +1,85 @@
+# Shell Commands Skill Configuration
+# Safe file system navigation and search commands
+
+# Skill metadata for selection
+name: shell-commands
+version: 1.0.0
+description: A safe shell commands skill for file system navigation and file searching. Includes ls, cd, pwd, cp, touch commands and powerful find/grep capabilities with regex support. Prohibits dangerous commands like rm and -fr for safety.
+
+# Access Control (optional)
+# Uncomment to restrict access by DL membership
+# user_group: []  # List of user groups that can access this skill
+# admin_group: []  # List of admin groups with full access
+
+# Skill Type: generic or custom
+# - generic: Uses ReAct agent with auto-discovered @skill_tool functions
+# - custom: Uses customized task agents with specific instructions
+skill_type: generic
+
+# Generic Skill Settings (for skill_type: generic)
+generic_settings:
+  # Tool auto-discovery from scripts/ directory
+  auto_discover_tools: true
+  
+  # Built-in resource access tools
+  enable_resource_tools: true
+  
+  # Agent settings
+  agent_type: react  # ReAct agent from NAT
+  max_iterations: 15
+  temperature: 0.1
+  
+# Runtime configuration
+runtime:
+  type: python
+  version: ">=3.8"
+  entry_point: scripts/shell_commands.py
+
+# Dependencies
+dependencies:
+  - PyYAML>=6.0
+  - langchain-nvidia-ai-endpoints>=0.1.0
+  - langchain-core>=0.1.0
+  - colorama>=0.4.0
+
+# Environment variables
+environment:
+  SAFE_MODE:
+    description: Enable safe mode to prevent dangerous commands (rm, -fr)
+    required: false
+    default: "true"
+  MAX_FIND_RESULTS:
+    description: Maximum number of results to return from find commands
+    required: false
+    default: "100"
+
+# Permissions required by this skill
+permissions:
+  - file:read
+  - file:write
+  - system:execute
+
+# Tags for skill categorization
+tags:
+  - shell
+  - commands
+  - file-system
+  - navigation
+  - search
+  - find
+  - grep
+  - utilities
+  - linux
+  - ubuntu
+
+# License
+license: MIT
+author: Zenodia
+
+# Documentation links
+documentation:
+  readme: README.md
+  examples: examples.md
+  skill_instructions: SKILL.md
+
+

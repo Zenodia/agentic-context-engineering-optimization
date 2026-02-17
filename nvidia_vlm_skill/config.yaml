@@ -1,0 +1,127 @@
+# NVIDIA Vision Language Model Skill Configuration
+# AI Planner / NAT Integration
+
+# Skill metadata for selection
+name: nvidia-vlm
+version: 1.0.0
+description: AI-powered vision language model skill using NVIDIA's Nemotron VLM for image analysis, visual understanding, and multimodal reasoning. Analyze images, extract information, and generate insights through natural language.
+
+# Access Control (optional)
+# Uncomment to restrict access by DL membership
+# user_group: []  # List of user groups that can access this skill
+# admin_group: []  # List of admin groups with full access
+
+# Skill Type: generic or custom
+# - generic: Uses ReAct agent with auto-discovered @skill_tool functions
+# - custom: Uses customized task agents with specific instructions
+skill_type: generic
+
+# Generic Skill Settings (for skill_type: generic)
+generic_settings:
+  # Tool auto-discovery from scripts/ directory
+  auto_discover_tools: true
+  
+  # Built-in resource access tools
+  enable_resource_tools: true
+  
+  # Agent settings
+  agent_type: react  # ReAct agent from NAT
+  max_iterations: 15
+  temperature: 0.2  # Lower temperature for precise visual analysis
+  
+# Custom Skill Settings (for skill_type: custom)
+# Uncomment and configure if skill_type is 'custom'
+# custom_settings:
+#   # Define custom task agents
+#   task_agents:
+#     - name: analyzer
+#       role: "Analyze visual content in images"
+#       instructions: "You are a visual analysis expert. Identify objects, scenes, and details in images."
+#       tools:
+#         - analyze_image_stream
+#         - describe_image
+#       temperature: 0.2
+#     
+#     - name: extractor
+#       role: "Extract specific information from images"
+#       instructions: "You are an information extraction specialist. Extract text, data, and structured information from images."
+#       tools:
+#         - extract_text_from_image
+#         - identify_objects
+#       temperature: 0.3
+#     
+#     - name: reasoner
+#       role: "Perform visual reasoning and inference"
+#       instructions: "You are a visual reasoning expert. Draw conclusions and insights from visual information."
+#       tools:
+#         - visual_question_answering
+#       temperature: 0.5
+#   
+#   # Dataset registry for custom agents
+#   datasets:
+#     - name: vlm_use_cases
+#       type: reference
+#       path: references/vlm_use_cases.md
+#       description: "Common VLM use cases and patterns"
+#     
+#     - name: image_analysis_patterns
+#       type: reference
+#       path: references/image_analysis_patterns.md
+#       description: "Best practices for image analysis prompts"
+
+# Runtime configuration
+runtime:
+  type: python
+  version: ">=3.10"
+  entry_point: scripts/vlm_skill.py
+
+# Dependencies
+dependencies:
+  - openai>=1.0.0
+  - PyYAML>=6.0
+  - langchain>=0.1.0  # For integration with NAT
+  - pydantic>=2.0.0  # For tool input validation
+  - Pillow>=10.0.0  # For image processing
+
+# Environment variables
+environment:
+  INFERENCE_API_KEY:
+    description: NVIDIA API key for accessing Nemotron VLM model
+    required: true
+
+# Permissions required by this skill
+permissions:
+  - file:read
+  - file:write
+  - network:api
+
+# Tags for skill categorization
+tags:
+  - vision
+  - vlm
+  - image-analysis
+  - multimodal
+  - nvidia
+  - ocr
+  - object-detection
+  - visual-reasoning
+
+# Model configuration
+model:
+  name: nvidia/nvidia/nemotron-nano-12b-v2-vl
+  endpoint: https://inference-api.nvidia.com
+  context_window: 4096
+  supports_streaming: true
+  supports_vision: true
+
+# License
+license: MIT
+author: Zenodia
+
+# Documentation links
+documentation:
+  readme: README.md
+  examples: examples.md
+  skill_instructions: SKILL.md
+
+

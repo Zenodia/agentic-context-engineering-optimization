@@ -1,0 +1,116 @@
+# NVIDIA Image Generation Skill Configuration
+# AI Planner / NAT Integration
+
+# Skill metadata for selection
+name: image-generation
+version: 1.0.0
+description: AI-powered image generation skill using NVIDIA's Flux.1 Schnell model for fast, high-quality text-to-image generation. Create stunning images from text prompts with customizable dimensions and quality settings.
+
+# Access Control (optional)
+# Uncomment to restrict access by DL membership
+# user_group: []  # List of user groups that can access this skill
+# admin_group: []  # List of admin groups with full access
+
+# Skill Type: generic or custom
+# - generic: Uses ReAct agent with auto-discovered @skill_tool functions
+# - custom: Uses customized task agents with specific instructions
+skill_type: generic
+
+# Generic Skill Settings (for skill_type: generic)
+generic_settings:
+  # Tool auto-discovery from scripts/ directory
+  auto_discover_tools: true
+  
+  # Built-in resource access tools
+  enable_resource_tools: true
+  
+  # Agent settings
+  agent_type: react  # ReAct agent from NAT
+  max_iterations: 15
+  temperature: 0.3  # Slightly higher for creative image generation
+
+# Custom Skill Settings (for skill_type: custom)
+# Uncomment and configure if skill_type is 'custom'
+# custom_settings:
+#   # Define custom task agents
+#   task_agents:
+#     - name: image_generator
+#       role: "Generate images from text descriptions"
+#       instructions: "You are an image generation expert. Create high-quality images based on user prompts."
+#       tools:
+#         - generate_image
+#         - generate_multiple_images
+#       temperature: 0.3
+#     
+#     - name: prompt_optimizer
+#       role: "Optimize prompts for better image generation"
+#       instructions: "You are a prompt engineering specialist. Help users craft effective image generation prompts."
+#       tools:
+#         - generate_image
+#       temperature: 0.5
+#   
+#   # Dataset registry for custom agents
+#   datasets:
+#     - name: prompt_examples
+#       type: reference
+#       path: references/prompt_examples.md
+#       description: "Example prompts for various image styles"
+#     
+#     - name: best_practices
+#       type: reference
+#       path: references/best_practices.md
+#       description: "Best practices for image generation"
+
+# Runtime configuration
+runtime:
+  type: python
+  version: ">=3.10"
+  entry_point: scripts/image_gen_skill.py
+
+# Dependencies
+dependencies:
+  - requests>=2.31.0
+  - PyYAML>=6.0
+  - langchain>=0.1.0  # For integration with NAT
+  - pydantic>=2.0.0  # For tool input validation
+
+# Environment variables
+environment:
+  NVIDIA_API_KEY:
+    description: NVIDIA API key for accessing Flux.1 Schnell model
+    required: true
+
+# Permissions required by this skill
+permissions:
+  - file:write
+  - network:api
+
+# Tags for skill categorization
+tags:
+  - image-generation
+  - text-to-image
+  - ai-art
+  - flux
+  - nvidia
+  - generative-ai
+  - creative
+  - visual-content
+
+# Model configuration
+model:
+  name: black-forest-labs/flux.1-schnell
+  endpoint: https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.1-schnell
+  type: text-to-image
+  supports_streaming: false
+  optimized_steps: 4
+
+# License
+license: MIT
+author: Zenodia
+
+# Documentation links
+documentation:
+  readme: README.md
+  examples: examples.md
+  skill_instructions: SKILL.md
+

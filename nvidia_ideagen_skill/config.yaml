@@ -1,0 +1,121 @@
+# NVIDIA Idea Generation Skill Configuration
+# AI Planner / NAT Integration
+
+# Skill metadata for selection
+name: nvidia-ideagen
+version: 1.0.0
+description: AI-powered idea generation skill using NVIDIA's Nemotron model for brainstorming, concept development, and creative ideation. Generate, expand, and manage ideas through natural language.
+
+# Access Control (optional)
+# Uncomment to restrict access by DL membership
+# user_group: []  # List of user groups that can access this skill
+# admin_group: []  # List of admin groups with full access
+
+# Skill Type: generic or custom
+# - generic: Uses ReAct agent with auto-discovered @skill_tool functions
+# - custom: Uses customized task agents with specific instructions
+skill_type: generic
+
+# Generic Skill Settings (for skill_type: generic)
+generic_settings:
+  # Tool auto-discovery from scripts/ directory
+  auto_discover_tools: true
+  
+  # Built-in resource access tools
+  enable_resource_tools: true
+  
+  # Agent settings
+  agent_type: react  # ReAct agent from NAT
+  max_iterations: 15
+  temperature: 0.7  # Higher creativity for idea generation
+  
+# Custom Skill Settings (for skill_type: custom)
+# Uncomment and configure if skill_type is 'custom'
+# custom_settings:
+#   # Define custom task agents
+#   task_agents:
+#     - name: generator
+#       role: "Generate creative ideas based on user topics"
+#       instructions: "You are an innovative idea generation expert. Create diverse, practical ideas."
+#       tools:
+#         - generate_ideas_stream
+#         - brainstorm_concepts
+#       temperature: 0.8
+#     
+#     - name: expander
+#       role: "Expand and detail existing ideas"
+#       instructions: "You are an idea development specialist. Provide comprehensive analysis and expansion."
+#       tools:
+#         - expand_idea
+#       temperature: 0.5
+#     
+#     - name: curator
+#       role: "Manage and organize idea library"
+#       instructions: "You are an idea librarian. Help users save, search, and organize their ideas."
+#       tools:
+#         - save_ideas
+#         - list_saved_ideas
+#       temperature: 0.3
+#   
+#   # Dataset registry for custom agents
+#   datasets:
+#     - name: idea_templates
+#       type: reference
+#       path: references/idea_templates.md
+#       description: "Pre-defined templates for different idea generation scenarios"
+#     
+#     - name: brainstorming_frameworks
+#       type: reference
+#       path: references/brainstorming_frameworks.md
+#       description: "Proven brainstorming methodologies and frameworks"
+
+# Runtime configuration
+runtime:
+  type: python
+  version: ">=3.10"
+  entry_point: scripts/ideagen_skill.py
+
+# Dependencies
+dependencies:
+  - openai>=1.0.0
+  - PyYAML>=6.0
+  - langchain>=0.1.0  # For integration with NAT
+  - pydantic>=2.0.0  # For tool input validation
+
+# Environment variables
+environment:
+  NVIDIA_API_KEY:
+    description: NVIDIA API key for accessing Nemotron model
+    required: true
+
+# Permissions required by this skill
+permissions:
+  - file:write
+  - network:api
+
+# Tags for skill categorization
+tags:
+  - ideation
+  - brainstorming
+  - creativity
+  - nvidia
+  - llm
+  - innovation
+
+# Model configuration
+model:
+  name: nvidia/llama-3.1-nemotron-nano-8b-v1
+  endpoint: https://integrate.api.nvidia.com/v1
+  context_window: 4096
+  supports_streaming: true
+
+# License
+license: MIT
+author: Zenodia
+
+# Documentation links
+documentation:
+  readme: README.md
+  examples: examples.md
+  skill_instructions: SKILL.md
+
